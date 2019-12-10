@@ -1,0 +1,7 @@
+{
+	"qta.extension.view.refresh": "刷新",
+	"qta.extension.codelen.refresh": "刷新代码段",
+	"qta.extension.view.run": "运行Python脚本",
+	"qta.extension.view.runTestcase": "运行测试用例",
+	"qta.extension.view.runTestcaseInline": "运行当前行所在的QTA测试用例"
+}
