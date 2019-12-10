@@ -1,0 +1,7 @@
+{
+	"qta.extension.view.refresh": "Refresh",
+	"qta.extension.codelen.refresh": "Refresh Codelen",
+	"qta.extension.view.run": "Run Python Script",
+	"qta.extension.view.runTestcase": "Run Testcase",
+	"qta.extension.view.runTestcaseInline": "Run QTA Testcase Of Selected Line"
+}

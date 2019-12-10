@@ -1,0 +1,158 @@
+{
+    "name": "qta-explorer-view",
+    "displayName": "QTA视图插件",
+    "description": "QTA视图插件",
+    "version": "0.0.1",
+    "publisher": "QTA",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "media/logo.png",
+    "activationEvents": [
+        "*",
+        "onView:qtaTreeView"
+    ],
+    "extensionDependencies": [
+        "ms-python.python"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "views": {
+            "explorer": [
+                {
+                    "id": "qtaTreeView",
+                    "name": "QTA"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello"
+            },
+            {
+                "command": "qta.extension.view.refresh",
+                "title": "%qta.extension.view.refresh%",
+                "icon": {
+                    "light": "resources/light/refresh.svg",
+                    "dark": "resources/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "qta.extension.codelen.refresh",
+                "title": "%qta.extension.codelen.refresh%",
+                "icon": {
+                    "light": "resources/light/refresh.svg",
+                    "dark": "resources/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "qta.extension.view.run",
+                "title": "%qta.extension.view.run%",
+                "icon": {
+                    "light": "resources/light/play.svg",
+                    "dark": "resources/dark/play.svg"
+                }
+            },
+            {
+                "command": "qta.extension.view.runTestcase",
+                "title": "%qta.extension.view.runTestcase%",
+                "icon": {
+                    "light": "resources/light/play.svg",
+                    "dark": "resources/dark/play.svg"
+                }
+            },
+            {
+                "command": "qta.extension.view.runTestcaseInline",
+                "title": "%qta.extension.view.runTestcaseInline%",
+                "icon": {
+                    "light": "resources/light/play.svg",
+                    "dark": "resources/dark/play.svg"
+                }
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "qta.extension.view.run",
+                    "when": "editorHasSelection"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "qta.extension.view.run",
+                    "when": "resourceFilename =~ /.+\\.py$/",
+                    "group": "navigation"
+                },
+                {
+                    "command": "qta.extension.view.runTestcaseInline",
+                    "when": "resourceFilename =~ /.+\\.py$/",
+                    "group": "navigation"
+                }
+            ],
+            "view/title": [
+                {
+                    "command": "qta.extension.view.refresh",
+                    "when": "view == qtaTreeView",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "qta.extension.view.run",
+                    "when": "view == qtaTreeView && viewItem == pyfile",
+                    "group": "navigation"
+                },
+                {
+                    "command": "qta.extension.view.runTestcase",
+                    "title": "%qta.extension.view.runTestcase%",
+                    "icon": {
+                        "light": "resources/light/play.svg",
+                        "dark": "resources/dark/play.svg"
+                    },
+                    "when": "view == qtaTreeView && viewItem == testcase",
+                    "group": "inline"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "QTA",
+            "properties": {
+                "qta.enableCodeLens": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "qta.pipSource": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "deploy": "vsce publish --yarn"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.43",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.18"
+    },
+    "dependencies": {
+        "iconv-lite": "^0.4.24",
+        "node-watch": "^0.5.8",
+        "xml-js": "^1.6.7"
+    }
+}
